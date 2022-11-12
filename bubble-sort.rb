@@ -4,18 +4,23 @@
 
 def bubble_sort(unsorted_array)
     temp = nil
+    not_sorted = true
 
-    unsorted_array.each_with_index do |item, idx|
-        next_idx = idx + 1
-        next_item = unsorted_array[next_idx]
-        if next_item.nil?
-            break
-        end
-        
-        if next_item < item
-            temp = item
-            unsorted_array[idx] = next_item
-            unsorted_array[next_idx] = temp
+    while not_sorted do
+        not_sorted = false
+        unsorted_array.each_with_index do |item, idx|
+            next_idx = idx + 1
+            next_item = unsorted_array[next_idx]
+            if next_item.nil?
+                break
+            end
+            
+            if next_item < item
+                temp = item
+                unsorted_array[idx] = next_item
+                unsorted_array[next_idx] = temp
+                not_sorted = true
+            end
         end
     end
     unsorted_array
